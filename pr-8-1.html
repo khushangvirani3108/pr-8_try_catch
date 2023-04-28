@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Buyer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <button type="button" onclick="allrecord()" class="btn bg-primary me-3 ms-3 my-3">All</button>
+        <button type="button" class="btn bg-primary me-3 ms-3 my-3" onclick="applerec()">Apple</button>
+        <button type="button" class="btn bg-primary me-3 ms-3 my-3" onclick="samsungrec()">Samsung</button>
+        <button type="button" class="btn bg-primary me-3 ms-3 my-3" onclick="oneplusrec()">One Plus</button>
+        <button type="button" class="btn bg-primary me-3 ms-3 my-3" onclick="nokiarec()">Nokia</button>
+    </div>
+    
+
+    <div class="row" id="all">
+
+    </div>
+
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    let data = [
+        {
+            name: "Iphone X",
+            image: "https://cdn.dxomark.com/wp-content/uploads/2018/07/apple_iphonex-1024x768.jpg",
+            price : "<del>$1100</del> <b>$999</b>",
+            company: "apple",
+        },
+        {
+            name: "Iphone 11",
+            image: "https://p.turbosquid.com/ts-thumb/5d/BqN6eS/FFMDh5gz/1s/jpg/1568376248/600x600/fit_q87/ec89204e145c552eb0fde35feef46112c158c107/1s.jpg",
+            price : "<del>$723.93</del> <b>$661.97</b>",
+            company: "apple",
+        },
+        {
+            name: "Iphone 12",
+            image: "https://www.apple.com/newsroom/images/product/iphone/standard/Apple_announce-iphone12pro_10132020.jpg.landing-big_2x.jpg",
+            price : "<del>$800.12</del> <b>$775.12</b>",
+            company: "apple",
+        },
+        {
+            name: "Iphone 13",
+            image: "https://www.apple.com/newsroom/images/product/iphone/standard/Apple_iPhone-13-Pro_iPhone-13-Pro-Max_09142021_inline.jpg.large.jpg",
+            price : "<del>$1200</del> <b>$1038.68</b>",
+            company: "apple",
+        },
+        {
+            name: "Iphone 14 pro max",
+            image: "https://res.cloudinary.com/grover/image/upload/f_webp,q_auto/b_white,c_pad,dpr_2.0,h_500,w_520/f_auto,q_auto/v1668184047/i9oaljwbk17wv0gpueno.png",
+            price : "<del>$1400</del> <b>$1199.99</b>",
+            company: "apple",
+        },
+        {
+            name: "Galaxy Z Flip4",
+            image: "https://fdn2.mobgsm.com/vv/pics/samsung/samsung-galaxy-z-flip4-5g-01.jpg",
+            price : "<del>$1400</del> <b>$1,249</b>",
+            company: "samsung",
+        },
+        {
+            name: "Galaxy Z Fold4",
+            image: "https://www.compareprix.in/images/product/large/samsung-galaxy-z-fold4-256gb-12gb-ram.png",
+            price : "<del>$2500</del> <b>$2,159</b>",
+            company: "samsung",
+        },
+        {
+            name: " Galaxy S23 Ultra",
+            image: "https://images.samsung.com/is/image/samsung/p6pim/ca/feature/164397733/ca-feature-galaxy-s-535284254?$FB_TYPE_A_MO_JPG$",
+            price : "<del>$1801.32</del> <b>$1,619.99</b>",
+            company: "samsung",
+        },
+        {
+            name: " Galaxy S23 plus | s23",
+            image: "https://images.samsung.com/in/smartphones/galaxy-s23/images/galaxy-s23-highlights-kv.jpg",
+            price : "<del>$1010.23</del> <b>$999</b>",
+            company: "samsung",
+        },
+        {
+            name: " Galaxy A53 5G",
+            image: "https://d2xamzlzrdbdbn.cloudfront.net/products/4b6c3d32-cb3e-4d67-b226-013f432b3ad922281118.jpg",
+            price : "<del>$500.00</del> <b>$397.99</b>",
+            company: "samsung",
+        },
+        {
+            name: " OnePlus Nord 2T 5G",
+            image: "https://m.media-amazon.com/images/I/617MPEZB5mL._SL1500_.jpg",
+            price : "<del>$756.24</del> <b>$654.23</b>",
+            company: "one plus",
+        },
+        {
+            name: " OnePlus Nord CE 2 Lite",
+            image: "https://m.media-amazon.com/images/I/51I8r88nJXL._SX679_.jpg",
+            price : "<del>$500.00</del> <b>$397.99</b>",
+            company: "one plus",
+        },
+        {
+            name: " OnePlus 10T 5G",
+            image: "https://m.media-amazon.com/images/I/71XKAnxCsLL._SX679_.jpg",
+            price : "<del>$500.00</del> <b>$397.99</b>",
+            company: "one plus",
+        },
+        {
+            name: " OnePlus 10R 5G",
+            image: "https://m.media-amazon.com/images/I/71BoiXkrEmL._SX679_.jpg",
+            company: "one plus",
+            price : "<del>$500.00</del> <b>$397.99</b>",
+        },
+        {
+            name: " OnePlus 9 Pro 5G",
+            image: "https://www.notebookcheck.net/typo3temp/_processed_/8/b/csm_4_zu_3_OnePlus_9_Pro_b449573f1a.jpg",
+            company: "one plus",
+            price : "<del>$500.00</del> <b>$397.99</b>",
+        },
+        {
+            name: " Nokia XR20",
+            image: "https://www.91-cdn.com/hub/wp-content/uploads/2021/10/Nokia-XR20-1.jpg?tr=q-100",
+            company: "Nokia",
+            price : "<del>$500.00</del> <b>$397.99</b>",
+        },
+        {
+            name: " Nokia G21",
+            image: "https://media.croma.com/image/upload/v1662435270/Croma%20Assets/Communication/Mobiles/Images/251584_hdcuw4.png",
+            company: "Nokia",
+            price : "<del>$500.00</del> <b>$397.99</b>",
+        },
+        {
+            name: " Nokia G11 Plus",
+            image: "https://images.ctfassets.net/wcfotm6rrl7u/2f5MaB0C5WBQpr2sE2CWVF/f7573cca99d45057ce2f8b8a85c4152c/nokia_G11_plus-DTC-SECURITY-devices-animated.png",
+            company: "Nokia",
+            price : "<del>$500.00</del> <b>$397.99</b>",
+        },
+        {
+            name: " Nokia C30",
+            image: "https://images.ctfassets.net/wcfotm6rrl7u/59FonGaStfaLlAOrAsEbu8/6c975e1c4e06512c563aedc8a7509a7e/nokia_C30-og_image.jpg?w=1200",
+            company: "Nokia",
+            price : "<del>$500.00</del> <b>$397.99</b>",
+        },
+        {
+            name: " Nokia C01 Plus",
+            image: "https://cdn1.smartprix.com/rx-if5N39bM0-w420-h420/nokia-c01-plus.jpg",
+            company: "Nokia",
+            price : "<del>$500.00</del> <b>$397.99</b>",
+        },
+
+    ];
+
+    allrecord();
+    function allrecord() {
+        let tbl = "";
+
+        data.map((val) => {
+            tbl += `
+                        
+                            <div class="col-md-4 mb-5">
+                            <div class="card">
+                    <img src="${val.image}" height="500px" style="object-fit:cover;">
+                    <div class="card-body">
+                    <h5 class="card-title">${val.name}</h5>
+                    <p class="card-text">${val.company}</p>
+                    <p class="card-text">${val.price}</p>
+                    <a href="#" class="btn btn-primary">Order Now</a>
+                    </div>
+                        </div>
+                        </div>
+                        
+                    `
+            document.getElementById('all').innerHTML = tbl;
+        });
+    }
+
+    function applerec() {
+
+        let tbl = "";
+
+        data.map((val) => {
+            if (val.company == "apple") {
+                tbl += `
+                        
+                            <div class="col-md-4 mb-5">
+                            <div class="card">
+                    <img src="${val.image}" height="500px" style="object-fit:cover;">
+                    <div class="card-body">
+                    <h5 class="card-title">${val.name}</h5>
+                    <p class="card-text">${val.company}</p>
+                    <p class="card-text">${val.price}</p>
+                    <a href="#" class="btn btn-primary">Order Now</a>
+                    </div>
+                        </div>
+                        </div>
+                        
+                    `
+            }
+            document.getElementById('all').innerHTML = tbl;
+        });
+    }
+    function samsungrec() {
+
+        let tbl = "";
+
+        data.map((val) => {
+            if (val.company == "samsung") {
+                tbl += `
+                        
+                            <div class="col-md-4 mb-5">
+                            <div class="card">
+                    <img src="${val.image}" height="500px" style="object-fit:cover;">
+                    <div class="card-body">
+                    <h5 class="card-title">${val.name}</h5>
+                    <p class="card-text">${val.company}</p>
+                    <p class="card-text">${val.price}</p>
+                    <a href="#" class="btn btn-primary">Order Now</a>
+                    </div>
+                        </div>
+                        </div>
+                        
+                    `
+            }
+            document.getElementById('all').innerHTML = tbl;
+        });
+    }
+    function oneplusrec() {
+
+        let tbl = "";
+
+        data.map((val) => {
+            if (val.company == "one plus") {
+                tbl += `
+                        
+                            <div class="col-md-4 mb-5">
+                            <div class="card">
+                    <img src="${val.image}" height="500px" style="object-fit:cover;">
+                    <div class="card-body">
+                    <h5 class="card-title">${val.name}</h5>
+                    <p class="card-text">${val.company}</p>
+                    <p class="card-text">${val.price}</p>
+                    <a href="#" class="btn btn-primary">Order Now</a>
+                    </div>
+                        </div>
+                        </div>
+                        
+                    `
+            }
+            document.getElementById('all').innerHTML = tbl;
+        });
+    }
+    function nokiarec() {
+
+        let tbl = "";
+
+        data.map((val) => {
+            if (val.company == "Nokia") {
+                tbl += `
+                        
+                            <div class="col-md-4 mb-5">
+                            <div class="card">
+                    <img src="${val.image}" height="500px" style="object-fit:cover;">
+                    <div class="card-body">
+                    <h5 class="card-title">${val.name}</h5>
+                    <p class="card-text">${val.company}</p>
+                    <p class="card-text">${val.price}</p>
+                    <a href="#" class="btn btn-primary">Order Now</a>
+                    </div>
+                        </div>
+                        </div>
+                        
+                    `
+            }
+            document.getElementById('all').innerHTML = tbl;
+        });
+    }
+
+
+
+
+</script>
